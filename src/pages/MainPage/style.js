@@ -1,15 +1,14 @@
 import styled from "styled-components";
-import starwars from "../../assets/images/starwarsbg.webp";
+import { animated } from "react-spring";
 
-export const BackGround = styled.div`
-	height: 100vh;
-	width: 100vw;
+export const BackGround = styled(animated.div)`
 	display: flex;
-	flex-direction:column;
+	height: 100%;
+	width: 100%;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background:linear-gradient(to bottom left,rgba(0,0,0,0.4),rgba(0,0,0,0.5)),url('${starwars}');
-	overflow:hidden;
+	overflow: hidden;
 `;
 
 export const Container = styled.div`

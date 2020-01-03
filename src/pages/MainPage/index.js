@@ -2,20 +2,27 @@ import React, { useState } from "react";
 import Button from "../../components/Button";
 import Card from "../../components/Card";
 import CardSkeleton from "../../components/CardSkeleton";
-
 import Modal from "../../components/Modal";
 import useFetch from "../../hooks/useFetch";
+import { useSpring } from "react-spring";
 import { BackGround, Container, RotatedTitle } from "./style";
 
-const randomNumber = Math.floor(Math.random() * 60 + 1);
-
-const Index = () => {
+const Index = props => {
+	const { totalPlanets } = props;
+	const randomNumber = Math.floor(Math.random() * totalPlanets + 1);
 	const [param, setParam] = useState(randomNumber);
 	const apiEndpoint = `https://swapi.co/api/planets/${param}`;
 	const { error, loading, data, resetError } = useFetch("get", apiEndpoint);
 
+	//animation
+	const showContent = useSpring({
+		to: async (next, cancel) => {
+			await next({ opacity: totalPlanets ? 1 : 0 });
+		},
+		from: { opacity: 0 }
+	});
+
 	const generateNumber = () => {
-		const randomNumber = Math.floor(Math.random() * 60 + 1);
 		setParam(randomNumber);
 	};
 
@@ -27,7 +34,7 @@ const Index = () => {
 		);
 
 	return (
-		<BackGround>
+		<BackGround style={showContent}>
 			<Modal error={error} onclick={resetError} />
 			<Container>
 				<RotatedTitle>
