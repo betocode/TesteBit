@@ -9,7 +9,7 @@ const useFetch = (method, url) => {
 	const getData = async (method, url) => {
 		try {
 			setLoading(true);
-			const { data } = await axios[method](url);
+			const { data } = await axios[method](url, { timeout: 5000 });
 			setData(data);
 		} catch (error) {
 			setError(true);
