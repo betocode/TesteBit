@@ -1,7 +1,7 @@
 import React from "react";
 import { ModalContainer, ModalBg } from "./style";
 import Button from "../Button";
-import { useSpring, animated } from "react-spring";
+import { useSpring } from "react-spring";
 
 const Index = props => {
 	const { error, onclick } = props;
