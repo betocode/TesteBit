@@ -6,7 +6,7 @@ import useFetch from "./hooks/useFetch";
 import starwars from "./assets/images/starwarsbg.webp";
 
 const App = () => {
-	const apiEndPoint = "https://swapi.co/api/planets/";
+	const apiEndPoint = "https://swapi.dev/api/planets/";
 	const { error, data, resetError } = useFetch("get", apiEndPoint);
 
 	const theme = {
