@@ -11,7 +11,7 @@ const Index = props => {
 	const { totalPlanets } = props;
 	const randomNumber = Math.floor(Math.random() * totalPlanets + 1);
 	const [param, setParam] = useState(randomNumber);
-	const apiEndpoint = `https://swapi.co/api/planets/${param}`;
+	const apiEndpoint = `https://swapi.dev/api/planets/${param}`;
 	const { error, loading, data, resetError } = useFetch("get", apiEndpoint);
 
 	//animation
